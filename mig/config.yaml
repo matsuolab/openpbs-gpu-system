@@ -1,0 +1,27 @@
+version: v1
+mig-configs:
+  # 3-way split: 2g.24gb x3 per GPU (24GB VRAM / 32 SMs each)
+  three-split:
+    - devices: all
+      mig-enabled: true
+      mig-devices:
+        "2g.24gb": 3
+
+  # 2-way split: 3g.47gb x2 per GPU (47GB VRAM / 60 SMs each)
+  two-split:
+    - devices: all
+      mig-enabled: true
+      mig-devices:
+        "3g.47gb": 2
+
+  # 7-way split: 1g.12gb x7 per GPU (12GB VRAM / 16 SMs each)
+  seven-split:
+    - devices: all
+      mig-enabled: true
+      mig-devices:
+        "1g.12gb": 7
+
+  # No split: MIG disabled (full GPU per job)
+  full:
+    - devices: all
+      mig-enabled: false
